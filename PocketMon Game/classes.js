@@ -102,7 +102,7 @@ class Monster extends Sprite {
             case 'Fireball':
                 audio.initFireball.play()
                 const fireballImage = new Image()
-                fireballImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/fireball.png'
+                fireballImage.src = 'PocketMon Game/images/fireball.png'
                 const fireball = new Sprite({
                     position: {
                         x: this.position.x,

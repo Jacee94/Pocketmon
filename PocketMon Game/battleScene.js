@@ -1,5 +1,5 @@
 const battleBackgroundImage = new Image()
-battleBackgroundImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/battleBackground.png'
+battleBackgroundImage.src = 'PocketMon Game/images/battleBackground.png'
 const battleBackground = new Sprite({
     position: {
         x: 0,
