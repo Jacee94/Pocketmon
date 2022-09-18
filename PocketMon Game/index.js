@@ -52,22 +52,22 @@ battleZonesMap.forEach((row, i) => {
 })
 
 const image = new Image()
-image.src = 'PocketMon Game/images/Pellet Town.png'
+image.src = './PocketMon Game/images/Pellet Town.png'
 
 const foregroundImage = new Image()
-foregroundImage.src = 'PocketMon Game/images/foregroundObjects.png'
+foregroundImage.src = './PocketMon Game/images/foregroundObjects.png'
 
 const playerDownImage = new Image()
-playerDownImage.src = 'PocketMon Game/images/playerDown.png'
+playerDownImage.src = './PocketMon Game/images/playerDown.png'
 
 const playerUpImage = new Image()
-playerUpImage.src = 'PocketMon Game/images/playerUp.png'
+playerUpImage.src = './PocketMon Game/images/playerUp.png'
 
 const playerLeftImage = new Image()
-playerLeftImage.src = 'PocketMon Game/images/playerLeft.png'
+playerLeftImage.src = './PocketMon Game/images/playerLeft.png'
 
 const playerRightImage = new Image()
-playerRightImage.src = 'PocketMon Game/images/playerRight.png'
+playerRightImage.src = './PocketMon Game/images/playerRight.png'
 
 const player = new Sprite({
     position: {

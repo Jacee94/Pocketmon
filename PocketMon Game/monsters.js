@@ -5,7 +5,7 @@ const monsters = {
             y: 325
         },
         image: {
-            src: 'PocketMon Game/images/embySprite.png'
+            src: './PocketMon Game/images/embySprite.png'
         },
         frames: {
             max: 4,
@@ -22,7 +22,7 @@ const monsters = {
             y: 100
         },
         image: {
-            src: 'PocketMon Game/images/draggleSprite.png'
+            src: './PocketMon Game/images/draggleSprite.png'
         },
         frames: {
             max: 4,
