@@ -1,17 +1,17 @@
-const canvas = document.querySelector('canvas')
-const c = canvas.getContext('2d')
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
 
-canvas.width = 1024
-canvas.height = 576
+canvas.width = 1024;
+canvas.height = 576;
 
-const collisionsMap = []
+const collisionsMap = [];
 for (let i = 0; i < collisions.length; i += 70) {
-    collisionsMap.push(collisions.slice(i, 70 + i))
+    collisionsMap.push(collisions.slice(i, 70 + i));
 }
 
-const battleZonesMap = []
+const battleZonesMap = [];
 for (let i = 0; i < battleZonesData.length; i += 70) {
-    battleZonesMap.push(battleZonesData.slice(i, 70 + i))
+    battleZonesMap.push(battleZonesData.slice(i, 70 + i));
 }
 
 const boundaries = []
@@ -35,7 +35,7 @@ collisionsMap.forEach((row, i) => {
     })
 })
 
-const battleZones = []
+const battleZones = [];
 
 battleZonesMap.forEach((row, i) => {
     row.forEach((symbol, j) => {
@@ -51,23 +51,23 @@ battleZonesMap.forEach((row, i) => {
     })
 })
 
-const image = new Image()
-image.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/Pellet Town.png'
+const image = new Image();
+image.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/Pellet Town.png';
 
-const foregroundImage = new Image()
-foregroundImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/foregroundObjects.png'
+const foregroundImage = new Image();
+foregroundImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/foregroundObjects.png';
 
-const playerDownImage = new Image()
-playerDownImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerDown.png'
+const playerDownImage = new Image();
+playerDownImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerDown.png';
 
-const playerUpImage = new Image()
-playerUpImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerUp.png'
+const playerUpImage = new Image();
+playerUpImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerUp.png';
 
-const playerLeftImage = new Image()
-playerLeftImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerLeft.png'
+const playerLeftImage = new Image();
+playerLeftImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerLeft.png';
 
-const playerRightImage = new Image()
-playerRightImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerRight.png'
+const playerRightImage = new Image();
+playerRightImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerRight.png';
 
 const player = new Sprite({
     position: {
@@ -85,7 +85,7 @@ const player = new Sprite({
         left: playerLeftImage,
         right: playerRightImage
     }
-})
+});
 
 const background = new Sprite({
     position: {
@@ -93,7 +93,7 @@ const background = new Sprite({
         y: offset.y
     },
     image: image
-})
+});
 
 const foreground = new Sprite({
     position: {
@@ -101,7 +101,7 @@ const foreground = new Sprite({
         y: offset.y
     },
     image: foregroundImage
-})
+});
 
 const keys = {
     w: {
@@ -116,9 +116,9 @@ const keys = {
     d: {
         pressed: false
     }
-}
+};
 
-const movables = [background, ...boundaries, foreground, ...battleZones]
+const movables = [background, ...boundaries, foreground, ...battleZones];
 
 function rectangularCollision({ rectangle1, rectangle2 }) {
     return (rectangle1.position.x + rectangle1.width >= rectangle2.position.x &&
@@ -130,7 +130,7 @@ function rectangularCollision({ rectangle1, rectangle2 }) {
 
 const battle = {
     initiated: false
-}
+};
 
 function animate() {
     const animationId = window.requestAnimationFrame(animate)
@@ -217,15 +217,15 @@ function animate() {
 
         if (moving)
             movables.forEach(movable => {
-                movable.position.y += 3
+                movable.position.y += 3;
             })
     }
     else if (keys.a.pressed && lastKey === 'a') {
-        player.animate = true
-        player.image = player.sprites.left
+        player.animate = true;
+        player.image = player.sprites.left;
 
         for (let i = 0; i < boundaries.length; i++) {
-            const boundary = boundaries[i]
+            const boundary = boundaries[i];
             if (
                 rectangularCollision({
                     rectangle1: player,
@@ -244,15 +244,15 @@ function animate() {
 
         if (moving)
             movables.forEach(movable => {
-                movable.position.x += 3
+                movable.position.x += 3;
             })
     }
     else if (keys.s.pressed && lastKey === 's') {
-        player.animate = true
-        player.image = player.sprites.down
+        player.animate = true;
+        player.image = player.sprites.down;
 
         for (let i = 0; i < boundaries.length; i++) {
-            const boundary = boundaries[i]
+            const boundary = boundaries[i];
             if (
                 rectangularCollision({
                     rectangle1: player,
@@ -271,15 +271,15 @@ function animate() {
 
         if (moving)
             movables.forEach(movable => {
-                movable.position.y -= 3
+                movable.position.y -= 3;
             })
     }
     else if (keys.d.pressed && lastKey === 'd') {
-        player.animate = true
-        player.image = player.sprites.right
+        player.animate = true;
+        player.image = player.sprites.right;
 
         for (let i = 0; i < boundaries.length; i++) {
-            const boundary = boundaries[i]
+            const boundary = boundaries[i];
             if (
                 rectangularCollision({
                     rectangle1: player,
@@ -291,22 +291,22 @@ function animate() {
                     }
                 })
             ) {
-                console.log('colliding')
-                moving = false
-                break
+                console.log('colliding');
+                moving = false;
+                break;
             }
         }
 
         if (moving)
             movables.forEach(movable => {
-                movable.position.x -= 3
+                movable.position.x -= 3;
             })
     }
 }
 
 //animate()
 
-let lastKey = ''
+let lastKey = '';
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
         case 'w':
@@ -326,7 +326,7 @@ window.addEventListener('keydown', (e) => {
             lastKey = 'd'
             break
     }
-})
+});
 
 window.addEventListener('keyup', (e) => {
     switch (e.key) {
@@ -343,7 +343,7 @@ window.addEventListener('keyup', (e) => {
             keys.d.pressed = false
             break
     }
-})
+});
 
 let clicked = false
 addEventListener('click', () => {
@@ -351,4 +351,4 @@ addEventListener('click', () => {
         audio.Map.play()
         clicked = true
     }
-})
+});
