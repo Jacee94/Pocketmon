@@ -51,23 +51,23 @@ battleZonesMap.forEach((row, i) => {
     })
 })
 
-const image = new Image();
-image.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/Pellet Town.png';
+const image = new Image()
+image.src = './PocketMon Game/images/Pellet Town.png'
 
-const foregroundImage = new Image();
-foregroundImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/foregroundObjects.png';
+const foregroundImage = new Image()
+foregroundImage.src = './PocketMon Game/images/foregroundObjects.png'
 
-const playerDownImage = new Image();
-playerDownImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerDown.png';
+const playerDownImage = new Image()
+playerDownImage.src = './PocketMon Game/images/playerDown.png'
 
-const playerUpImage = new Image();
-playerUpImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerUp.png';
+const playerUpImage = new Image()
+playerUpImage.src = './PocketMon Game/images/playerUp.png'
 
-const playerLeftImage = new Image();
-playerLeftImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerLeft.png';
+const playerLeftImage = new Image()
+playerLeftImage.src = './PocketMon Game/images/playerLeft.png'
 
-const playerRightImage = new Image();
-playerRightImage.src = '/Volumes/Coding/Coding Portfolio/PocketMon/PocketMon Game/images/playerRight.png';
+const playerRightImage = new Image()
+playerRightImage.src = './PocketMon Game/images/playerRight.png'
 
 const player = new Sprite({
     position: {
