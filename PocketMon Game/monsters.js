@@ -1,4 +1,6 @@
-const monsters = {
+import { attacks } from "./data/attacks.js";
+
+export const monsters = {
     Emby: {
         position: {
             x: 280,

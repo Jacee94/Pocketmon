@@ -1,5 +1,10 @@
+import { Sprite } from './classes.js';
+import { animate } from './animate.js';
+import { Monster } from './classes.js';
+import { monsters } from './monsters.js';
+
 const battleBackgroundImage = new Image()
-battleBackgroundImage.src = './PocketMon Game/images/battleBackground.png'
+battleBackgroundImage.src = './images/battleBackground.png'
 const battleBackground = new Sprite({
     position: {
         x: 0,
@@ -14,7 +19,7 @@ let renderedSprites
 let battleAnimationId
 let queue
 
-function initBattle() {
+export function initBattle() {
     document.querySelector('#userInterface').style.display = 'block'
     document.querySelector('#dialogueBox').style.display = 'none'
     document.querySelector('#enemyHealthBar').style.width = '100%'
@@ -48,15 +53,15 @@ function initBattle() {
                     gsap.to('#overlappingDiv', {
                         opacity: 1,
                         onComplete: () => {
-                            cancelAnimationFrame(battleAnimationId)
-                            animate()
-                            document.querySelector('#userInterface').style.display = 'none'
+                            cancelAnimationFrame(battleAnimationId);
+                            animate();
+                            document.querySelector('#userInterface').style.display = 'none';
                             gsap.to('#overlappingDiv', {
                                 opacity: 0
                             })
 
-                            battle.initiated = false
-                            audio.Map.play()
+                            battle.initiated = false;
+                            audio.Map.play();
                         }
                     })
                 })
@@ -105,7 +110,7 @@ function initBattle() {
     })
 }
 
-function animateBattle() {
+export function animateBattle() {
     battleAnimationId = window.requestAnimationFrame(animateBattle)
     battleBackground.draw()
 
