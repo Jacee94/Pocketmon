@@ -9,7 +9,6 @@ import { foreground } from './modules/sprites/foreground.js';
 import { battle } from './modules/gameObjs/battle.js';
 import { keys } from './modules/gameObjs/keys.js';
 import { animate } from './animate.js';
-import { battleZones } from './modules/gameObjs/boundaries.js';
 
 canvas.width = 1024;
 canvas.height = 576;

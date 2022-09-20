@@ -4,7 +4,7 @@ import { boundaries } from './modules/gameObjs/boundaries.js';
 import { battleZones} from './modules/gameObjs/boundaries.js';
 import { player } from './modules/sprites/player.js';
 import { foreground } from './modules/sprites/foreground.js';
-import { battle } from './modules/gameObjs/battle.js';
+import { battle, getBattleInitiated } from './modules/gameObjs/battle.js';
 import { keys } from './modules/gameObjs/keys.js';
 import { rectangularCollision } from './modules/gameObjs/rectangularCollision.js';
 import { audio } from './data/audio.js';
@@ -66,7 +66,7 @@ export function animate() {
     let moving = true;
     player.animate = false;
 
-    if (battle.initiated) return;
+    if (getBattleInitiated()) return;
 
     // activate a battle
     if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
@@ -84,10 +84,10 @@ export function animate() {
                 //deactivate current animation loop
                 window.cancelAnimationFrame(animationId)
 
-                audio.Map.stop()
-                audio.initBattle.play()
-                audio.battle.play()
-                battle.initiated = true
+                audio.Map.stop();
+                audio.initBattle.play();
+                audio.battle.play();
+                battle.initiated = true;
                 gsap.to('#overlappingDiv', {
                     opacity: 1,
                     repeat: 3,
@@ -130,7 +130,7 @@ export function animate() {
                     }
                 })
             ) {
-                // moving = false;
+                moving = false;
                 break;
             }
         }

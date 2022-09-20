@@ -2,16 +2,20 @@ import { Sprite } from './classes.js';
 import { animate } from './animate.js';
 import { Monster } from './classes.js';
 import { monsters } from './monsters.js';
+import { attacks } from './data/attacks.js';
+import { setBattleInitiated } from './modules/gameObjs/battle.js';
+import { audio } from './data/audio.js';
 
 const battleBackgroundImage = new Image()
-battleBackgroundImage.src = './images/battleBackground.png'
+battleBackgroundImage.src = './images/battleBackground.png';
+
 const battleBackground = new Sprite({
     position: {
         x: 0,
         y: 0
     },
     image: battleBackgroundImage
-})
+});
 
 let draggle
 let emby
@@ -60,12 +64,12 @@ export function initBattle() {
                                 opacity: 0
                             })
 
-                            battle.initiated = false;
+                            setBattleInitiated(false);
+                            
                             audio.Map.play();
                         }
                     })
                 })
-
             }
             //enemy attacks here
             const randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
@@ -86,15 +90,15 @@ export function initBattle() {
                         gsap.to('#overlappingDiv', {
                             opacity: 1,
                             onComplete: () => {
-                                cancelAnimationFrame(battleAnimationId)
-                                animate()
-                                document.querySelector('#userInterface').style.display = 'none'
+                                cancelAnimationFrame(battleAnimationId);
+                                animate();
+                                document.querySelector('#userInterface').style.display = 'none';
                                 gsap.to('#overlappingDiv', {
                                     opacity: 0
                                 })
 
-                                battle.initiated = false
-                                audio.Map.play()
+                                setBattleInitiated(false);
+                                audio.Map.play();
                             }
                         })
                     })
@@ -103,28 +107,28 @@ export function initBattle() {
         })
 
         button.addEventListener('mouseenter', (e) => {
-            const selectedAttack = attacks[e.currentTarget.innerHTML]
-            document.querySelector('#attackType').innerHTML = selectedAttack.type
-            document.querySelector('#attackType').style.color = selectedAttack.color
+            const selectedAttack = attacks[e.currentTarget.innerHTML];
+            document.querySelector('#attackType').innerHTML = selectedAttack.type;
+            document.querySelector('#attackType').style.color = selectedAttack.color;
         })
     })
 }
 
 export function animateBattle() {
-    battleAnimationId = window.requestAnimationFrame(animateBattle)
-    battleBackground.draw()
+    battleAnimationId = window.requestAnimationFrame(animateBattle);
+    battleBackground.draw();
 
     renderedSprites.forEach((sprite) => {
-        sprite.draw()
+        sprite.draw();
     })
 }
-animate()
+// animate();
 //initBattle()
 //animateBattle()
 
 document.querySelector('#dialogueBox').addEventListener('click', (e) => {
     if (queue.length > 0) {
-        queue[0]()
-        queue.shift()
-    } else e.currentTarget.style.display = 'none'
+        queue[0]();
+        queue.shift();
+    } else e.currentTarget.style.display = 'none';
 })

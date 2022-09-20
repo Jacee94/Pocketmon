@@ -15,8 +15,8 @@ playerRightImage.src = './images/playerRight.png';
 
 export const player = new Sprite({
     position: {
-        x: canvas.width / 2 - 192 / 4 / 2,
-        y: canvas.height / 2 - 68 / 2
+        x: canvas.width * 1.63,
+        y: canvas.height * 1.6
     },
     image: playerDownImage,
     frames: {
@@ -30,3 +30,6 @@ export const player = new Sprite({
         right: playerRightImage
     }
 });
+
+// x: canvas.width / 2 - 192 / 4 / 2,
+// y: canvas.height / 2 - 68 / 2

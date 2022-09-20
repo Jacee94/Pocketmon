@@ -1,4 +1,5 @@
 import { c } from "./canvas.js";
+import { audio } from "./data/audio.js";
 
 export class Sprite {
     constructor({ position, velocity, image, frames = { max: 1, hold: 10 }, sprites = [], animate = false, rotation = 0 }) {
@@ -32,12 +33,12 @@ export class Sprite {
             this.image.width / this.frames.max,
             this.image.height
         )
-        c.restore()
+        c.restore();
 
-        if (!this.animate) return
+        if (!this.animate) return;
 
         if (this.frames.max > 1) {
-            this.frames.elapsed++
+            this.frames.elapsed++;
         }
 
         if (this.frames.elapsed % this.frames.hold === 0) {
@@ -73,13 +74,18 @@ export class Monster extends Sprite {
         this.isEnemy = isEnemy
         this.rotation = rotation
         this.name = name
-        this.attacks = attacks
+        this.attacks = attacks;
+        this.originalPos = {x: this.position.x, y: this.position.y};
     }
 
     faint() {
         document.querySelector('#dialogueBox').innerHTML = this.name + ' fainted! '
         gsap.to(this.position, {
-            y: this.position.y + 20
+            y: this.position.y + 20,
+            onComplete: () => {
+                this.position.x = this.originalPos.x;
+                this.position.y = this.originalPos.y;
+            }
         })
         gsap.to(this, {
             opacity: 0
@@ -102,9 +108,9 @@ export class Monster extends Sprite {
 
         switch (attack.name) {
             case 'Fireball':
-                audio.initFireball.play()
+                audio.initFireball.play();
                 const fireballImage = new Image()
-                fireballImage.src = './PocketMon Game/images/fireball.png'
+                fireballImage.src = './images/fireball.png'
                 const fireball = new Sprite({
                     position: {
                         x: this.position.x,
@@ -134,7 +140,11 @@ export class Monster extends Sprite {
                             x: recipient.position.x + 10,
                             yoyo: true,
                             repeat: 5,
-                            duration: 0.08
+                            duration: 0.08,
+                            onComplete: () => {
+                                this.position.x = this.originalPos.x;
+                                this.position.y = this.originalPos.y;
+                            }
                         })
 
                         gsap.to(recipient, {
